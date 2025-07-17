@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 페이지 제목: "[이름] | [직무]" 형식으로 수정해 보세요. -->
+    <title>Daewon Park | HR Portfolio</title>
+    
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Pretendard) - 토스와 유사한 느낌의 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <style>
+        /* Pretendard 폰트를 기본 폰트로 설정 */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+        }
+        /* 스크롤 애니메이션을 위한 초기 상태 설정 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* 스크롤 시 나타날 때의 상태 */
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- ======================================================= -->
+    <!-- HEADER / NAVIGATION (상단 헤더 및 내비게이션)             -->
+    <!-- ======================================================= -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">
+                <!-- 자신의 이름으로 변경하세요 -->
+                Daewon Park
+            </a>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#about" class="text-gray-300 hover:text-white transition-colors">소개</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition-colors">경험</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition-colors">역량</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition-colors">연락처</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <!-- ======================================================= -->
+        <!-- ABOUT / HERO SECTION (소개 섹션)                      -->
+        <!-- ======================================================= -->
+        <section id="about" class="min-h-screen flex items-center pt-20">
+            <div class="w-full">
+                <!-- 핵심 메시지 (Headline) -->
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 reveal">
+                    <!-- 자신을 표현하는 핵심 문구를 입력하세요 -->
+                    <span class="text-indigo-400">사람과 조직의 성장을 돕는</span><br>
+                    인사담당자 박대원입니다.
+                </h1>
+                
+                <!-- 자기소개 (Bio) -->
+                <p class="max-w-3xl text-lg md:text-xl text-gray-400 mb-10 reveal" style="transition-delay: 200ms;">
+                    <!-- 2~3문장으로 자신을 소개하는 글을 작성하세요 -->
+                    채용, 평가, 보상 등 인사 전반의 경험을 통해 구성원이 몰입할 수 있는 환경을 만듭니다. 
+                    데이터 기반의 합리적인 의사결정과 따뜻한 소통으로 조직의 성공에 기여하고 싶습니다.
+                </p>
+
+                <!-- 연락처 버튼 -->
+                <div class="reveal" style="transition-delay: 400ms;">
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-lg px-8 py-4 rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300">
+                        지금 바로 연락하기
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- PROJECTS SECTION (경험/프로젝트 섹션)                 -->
+        <!-- ======================================================= -->
+        <section id="projects" class="py-20 md:py-32">
+            <div class="text-left mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">주요 경험</h2>
+                <p class="text-lg text-gray-400">제가 참여하고 이끌었던 핵심적인 경험들입니다.</p>
+            </div>
+            
+            <!-- 프로젝트 카드들을 담는 컨테이너 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- === 경험 1 === -->
+                <div class="bg-gray-800/50 rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                    <h3 class="text-2xl font-bold mb-3 text-indigo-300">
+                        <!-- 경험 1의 제목을 입력하세요 -->
+                        개발 직군 채용 프로세스 개선
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        <!-- 경험 1의 설명을 입력하세요 -->
+                        지원자 이탈률을 20% 감소시키고 채용 기간을 15일 단축했습니다. 코딩 테스트와 기술 면접 단계를 효율화하고 긍정적인 채용 경험을 제공하는 데 집중했습니다.
+                    </p>
+                    <!-- 관련 역량 태그 -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">채용 브랜딩</span>
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">프로세스 개선</span>
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">데이터 분석</span>
+                    </div>
+                </div>
+
+                <!-- === 경험 2 === -->
+                <div class="bg-gray-800/50 rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                    <h3 class="text-2xl font-bold mb-3 text-indigo-300">
+                        <!-- 경험 2의 제목을 입력하세요 -->
+                        전사 목표관리(OKR) 시스템 도입
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        <!-- 경험 2의 설명을 입력하세요 -->
+                        전사 목표와 팀, 개인의 목표를 정렬하여 업무 투명성과 몰입도를 높였습니다. 성공적인 도입을 위해 워크숍과 지속적인 코칭을 진행했습니다.
+                    </p>
+                    <!-- 관련 역량 태그 -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">성과 관리</span>
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">조직 문화</span>
+                        <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">변화 관리</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- SKILLS SECTION (역량/기술 스택 섹션)                  -->
+        <!-- ======================================================= -->
+        <section id="skills" class="py-20 md:py-32">
+            <div class="text-left mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">핵심 역량</h2>
+                <p class="text-lg text-gray-400">저는 다음과 같은 역량을 통해 기여할 수 있습니다.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 역량 1 -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">인사 기획 (HRM)</h3>
+                    <p class="text-gray-400">채용, 평가, 보상, 노무 등 전략적인 인사 제도를 설계하고 운영합니다.</p>
+                </div>
+                <!-- 역량 2 -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">조직 개발 (HRD)</h3>
+                    <p class="text-gray-400">구성원의 성장을 지원하고 건강한 조직 문화를 구축합니다.</p>
+                </div>
+                <!-- 역량 3 -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">데이터 기반 의사결정</h3>
+                    <p class="text-gray-400">HR 데이터를 분석하여 객관적이고 합리적인 인사이트를 도출합니다.</p>
+                </div>
+                 <!-- 역량 4 -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">커뮤니케이션</h3>
+                    <p class="text-gray-400">내부 구성원 및 외부 이해관계자와 명확하고 진솔하게 소통합니다.</p>
+                </div>
+                 <!-- 역량 5 -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">리더십 코칭</h3>
+                    <p class="text-gray-400">리더들이 팀을 성공적으로 이끌 수 있도록 지원하고 조언합니다.</p>
+                </div>
+                 <!-- 역량 6 -->
+                 <div class="bg-gray-800/50 p-6 rounded-2xl reveal">
+                    <h3 class="text-xl font-bold text-indigo-300 mb-2">문제 해결 능력</h3>
+                    <p class="text-gray-400">복잡한 HR 이슈의 본질을 파악하고 효과적인 해결책을 제시합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- CONTACT SECTION (연락처 섹션)                         -->
+        <!-- ======================================================= -->
+        <section id="contact" class="py-20 md:py-32 text-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    함께 성장할 기회를 찾습니다
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-10">
+                    저의 경험과 역량에 대해 더 궁금한 점이 있다면 언제든지 편하게 연락 주세요.
+                </p>
+                <!-- 이메일 주소: 자신의 이메일로 변경하세요 -->
+                <a 
+                    href="mailto:dwn.par@gmail.com"
+                    class="inline-block bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold text-lg px-10 py-5 rounded-lg hover:shadow-lg hover:shadow-indigo-500/50 transform hover:-translate-y-1 transition-all duration-300"
+                >
+                    메일 보내기
+                </a>
+                
+                <!-- 소셜 링크 -->
+                <div class="flex justify-center space-x-6 mt-12">
+                     <!-- LinkedIn 링크: href="#" 부분에 자신의 LinkedIn 주소를 입력하세요 -->
+                    <a href="https://www.linkedin.com/in/daewonpark1188933" target="_blank" class="text-gray-500 hover:text-white transition-colors" title="LinkedIn">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <!-- 블로그/기타 링크 (선택사항): href="#" 부분에 자신의 주소를 입력하세요 -->
+                    <a href="#" target="_blank" class="text-gray-500 hover:text-white transition-colors" title="Blog">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-8.994v6.494a2 2 0 002 2h10a2 2 0 002-2V8.753a2 2 0 00-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================= -->
+    <!-- FOOTER (하단 푸터)                                      -->
+    <!-- ======================================================= -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <!-- 저작권 문구: 연도와 이름을 수정하세요 -->
+            &copy; 2025 Daewon Park. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- 스크롤 애니메이션을 위한 JavaScript -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // 뷰포트에 들어온 요소에 'visible' 클래스를 추가합니다.
+                    // 약간의 지연(delay)을 주어 순차적으로 나타나게 합니다.
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.1 // 요소가 10% 보일 때 애니메이션을 시작합니다.
+        });
+
+        // 'reveal' 클래스를 가진 모든 요소를 관찰합니다.
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
