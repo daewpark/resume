@@ -156,24 +156,6 @@
     position: relative;
   }
 
-  .hero-eyebrow {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--terracotta-deep);
-    margin-bottom: 26px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    opacity: 0;
-    animation: rise 0.8s ease forwards 0.1s;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 28px; height: 1px;
-    background: var(--terracotta);
-  }
-
   .hero h1 {
     font-family: 'Source Serif 4', 'Noto Serif KR', serif;
     font-weight: 500;
@@ -204,10 +186,15 @@
     margin-top: 64px;
     display: flex;
     gap: 64px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     opacity: 0;
     animation: rise 0.9s ease forwards 0.55s;
   }
+  .hero-stats::-webkit-scrollbar { display: none; }
+  .hero-stats > div { flex-shrink: 0; }
   .stat-num {
     font-family: 'Source Serif 4', 'Noto Serif KR', serif;
     font-size: 40px;
@@ -217,7 +204,7 @@
     font-size: 12px;
     color: var(--ink-soft);
     margin-top: 4px;
-    max-width: 170px;
+    width: 170px;
   }
 
   @keyframes rise {
@@ -568,13 +555,9 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow mono">
-    <span class="lang-kr">HR 비즈니스 파트너 · 서울, 대한민국</span>
-    <span class="lang-en">HR BUSINESS PARTNER · SEOUL, KOREA</span>
-  </div>
   <h1>
     <span class="lang-kr">박대원<br><em>인사 전략을,</em><br>숫자로 증명합니다.</span>
-    <span class="lang-en">Daewon Park<br><em>People strategy,</em> quantified.</span>
+    <span class="lang-en">Daewon Park<br><em>People strategy,</em><br>quantified.</span>
   </h1>
   <p class="hero-role">
     <span class="lang-kr">성과관리 <span class="sep">·</span> 보상 및 토탈리워드 <span class="sep">·</span> HR 애널리틱스</span>
