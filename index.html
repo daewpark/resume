@@ -82,7 +82,8 @@
     transition: border-color 0.3s ease;
   }
   nav.scrolled { border-bottom: 1px solid var(--line); }
-  .nav-mark { font-size: 15px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; flex-shrink: 0; }
+  .nav-mark { font-size: 22px; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; flex-shrink: 0; color: var(--ink); line-height: 1; }
+  .nav-mark .dot { color: var(--terracotta); }
   .nav-links { display: flex; align-items: center; gap: 20px; font-size: 13px; min-width: 0; flex: 1 1 auto; justify-content: flex-end; }
   .nav-scroll {
     display: flex;
@@ -549,7 +550,7 @@
 <body class="lang-en">
 
 <nav id="nav">
-  <div class="nav-mark serif"><span class="lang-kr">박대원</span><span class="lang-en">D. Park</span></div>
+  <div class="nav-mark serif" aria-label="D. Park" title="D. Park">D<span class="dot">.</span></div>
   <div class="nav-links">
     <div class="nav-scroll">
       <a href="#about"><span class="lang-kr">소개</span><span class="lang-en">About</span></a>
