@@ -156,6 +156,41 @@
     position: relative;
   }
 
+  /* subtle decorative dot/square field, wide screens only */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    display: none;
+  }
+  @media (min-width: 900px) { .hero-bg { display: block; } }
+
+  .bg-dot, .bg-sq {
+    position: absolute;
+    translate: -50% -50%;
+    opacity: var(--target-opacity, 0.2);
+    scale: 1;
+    animation:
+      bg-draw 1.2s ease var(--draw-delay, 0s) both,
+      bg-pulse var(--pulse-dur, 8s) ease-in-out var(--pulse-delay, 0s) infinite;
+  }
+  .bg-dot { border-radius: 50%; }
+  .bg-sq { border-radius: 2px; rotate: var(--rot, 0deg); }
+  .bg-terracotta { background: var(--terracotta); }
+  .bg-ink-soft { background: var(--ink-soft); }
+  .bg-terracotta-outline { background: transparent; border: 1.5px solid var(--terracotta); }
+
+  @keyframes bg-draw {
+    from { opacity: 0; scale: 0.3; }
+    to { opacity: var(--target-opacity, 0.2); scale: 1; }
+  }
+  @keyframes bg-pulse {
+    0%, 100% { opacity: var(--target-opacity, 0.2); }
+    50% { opacity: calc(var(--target-opacity, 0.2) * 0.4); }
+  }
+
   .hero h1 {
     font-family: 'Source Serif 4', 'Noto Serif KR', serif;
     font-weight: 500;
@@ -210,6 +245,19 @@
   @keyframes rise {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.8s cubic-bezier(.22,.6,.2,1), transform 0.8s cubic-bezier(.22,.6,.2,1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .scroll-cue {
@@ -555,6 +603,62 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="bg-dot bg-terracotta" style="left:76.7%;top:6.3%;width:4px;height:4px;--target-opacity:0.2;--draw-delay:1.77s;--pulse-dur:9.4s;--pulse-delay:3.57s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:50.2%;top:42.8%;width:3px;height:3px;--target-opacity:0.18;--draw-delay:1.21s;--pulse-dur:6.1s;--pulse-delay:0.8s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:77.2%;top:54.1%;width:3px;height:3px;--target-opacity:0.24;--draw-delay:1.94s;--pulse-dur:6.0s;--pulse-delay:3.22s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:79.5%;top:35.3%;width:3px;height:3px;--target-opacity:0.2;--draw-delay:0.25s;--pulse-dur:7.9s;--pulse-delay:1.44s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:62.5%;top:28.3%;width:3px;height:3px;--target-opacity:0.29;--draw-delay:0.3s;--pulse-dur:10.6s;--pulse-delay:0.32s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:60.1%;top:61.8%;width:4px;height:4px;--target-opacity:0.26;--draw-delay:0.17s;--pulse-dur:9.3s;--pulse-delay:3.09s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:93.3%;top:82.7%;width:3px;height:3px;--target-opacity:0.23;--draw-delay:1.53s;--pulse-dur:7.8s;--pulse-delay:1.48s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:56.1%;top:28.6%;width:3px;height:3px;--target-opacity:0.27;--draw-delay:1.28s;--pulse-dur:7.2s;--pulse-delay:1.85s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:59.0%;top:89.1%;width:5px;height:5px;--target-opacity:0.2;--draw-delay:2.02s;--pulse-dur:9.9s;--pulse-delay:0.92s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:47.5%;top:33.0%;width:4px;height:4px;--target-opacity:0.17;--draw-delay:2.1s;--pulse-dur:7.6s;--pulse-delay:2.62s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:65.0%;top:88.1%;width:4px;height:4px;--target-opacity:0.19;--draw-delay:0.59s;--pulse-dur:8.8s;--pulse-delay:1.05s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:74.1%;top:86.6%;width:4px;height:4px;--target-opacity:0.23;--draw-delay:1.22s;--pulse-dur:6.5s;--pulse-delay:0.19s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:51.3%;top:61.7%;width:4px;height:4px;--target-opacity:0.27;--draw-delay:0.92s;--pulse-dur:11.0s;--pulse-delay:2.12s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:92.6%;top:83.2%;width:3px;height:3px;--target-opacity:0.28;--draw-delay:1.64s;--pulse-dur:8.7s;--pulse-delay:1.07s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:76.8%;top:14.3%;width:4px;height:4px;--target-opacity:0.19;--draw-delay:2.29s;--pulse-dur:10.4s;--pulse-delay:1.05s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:70.0%;top:20.4%;width:3px;height:3px;--target-opacity:0.32;--draw-delay:2.02s;--pulse-dur:8.5s;--pulse-delay:0.8s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:63.9%;top:18.9%;width:5px;height:5px;--target-opacity:0.33;--draw-delay:0.78s;--pulse-dur:6.1s;--pulse-delay:3.72s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:88.2%;top:80.5%;width:4px;height:4px;--target-opacity:0.2;--draw-delay:2.11s;--pulse-dur:10.7s;--pulse-delay:0.34s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:69.3%;top:10.4%;width:5px;height:5px;--target-opacity:0.3;--draw-delay:1.58s;--pulse-dur:10.7s;--pulse-delay:0.66s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:71.3%;top:59.8%;width:3px;height:3px;--target-opacity:0.33;--draw-delay:1.66s;--pulse-dur:9.6s;--pulse-delay:1.6s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:78.2%;top:38.4%;width:5px;height:5px;--target-opacity:0.24;--draw-delay:0.54s;--pulse-dur:7.7s;--pulse-delay:2.35s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:57.0%;top:24.3%;width:3px;height:3px;--target-opacity:0.29;--draw-delay:0.55s;--pulse-dur:10.5s;--pulse-delay:3.44s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:49.4%;top:25.9%;width:4px;height:4px;--target-opacity:0.2;--draw-delay:1.74s;--pulse-dur:10.4s;--pulse-delay:2.3s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:57.7%;top:47.5%;width:4px;height:4px;--target-opacity:0.19;--draw-delay:1.58s;--pulse-dur:7.8s;--pulse-delay:1.64s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:87.5%;top:9.0%;width:3px;height:3px;--target-opacity:0.17;--draw-delay:0.81s;--pulse-dur:10.3s;--pulse-delay:0.99s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:55.1%;top:45.3%;width:4px;height:4px;--target-opacity:0.19;--draw-delay:0.6s;--pulse-dur:10.6s;--pulse-delay:1.77s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:87.3%;top:54.6%;width:3px;height:3px;--target-opacity:0.28;--draw-delay:2.01s;--pulse-dur:10.8s;--pulse-delay:3.71s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:86.7%;top:19.3%;width:4px;height:4px;--target-opacity:0.25;--draw-delay:2.17s;--pulse-dur:6.8s;--pulse-delay:0.01s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:64.7%;top:89.2%;width:4px;height:4px;--target-opacity:0.21;--draw-delay:2.3s;--pulse-dur:11.0s;--pulse-delay:2.22s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:80.5%;top:18.2%;width:4px;height:4px;--target-opacity:0.2;--draw-delay:1.39s;--pulse-dur:8.7s;--pulse-delay:2.99s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:48.7%;top:57.7%;width:5px;height:5px;--target-opacity:0.33;--draw-delay:0.38s;--pulse-dur:10.8s;--pulse-delay:0.32s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:54.9%;top:58.7%;width:3px;height:3px;--target-opacity:0.23;--draw-delay:0.59s;--pulse-dur:9.0s;--pulse-delay:2.48s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:66.1%;top:57.7%;width:5px;height:5px;--target-opacity:0.22;--draw-delay:0.49s;--pulse-dur:9.6s;--pulse-delay:0.95s;"></span>
+    <span class="bg-dot bg-terracotta" style="left:65.0%;top:65.8%;width:4px;height:4px;--target-opacity:0.24;--draw-delay:0.02s;--pulse-dur:9.1s;--pulse-delay:2.25s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:11.4%;top:53.5%;width:3px;height:3px;--target-opacity:0.1;--draw-delay:2.43s;--pulse-dur:11.4s;--pulse-delay:3.52s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:36.7%;top:18.5%;width:3px;height:3px;--target-opacity:0.14;--draw-delay:1.59s;--pulse-dur:11.9s;--pulse-delay:2.62s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:2.7%;top:79.2%;width:3px;height:3px;--target-opacity:0.15;--draw-delay:0.27s;--pulse-dur:11.4s;--pulse-delay:1.06s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:85.6%;top:72.3%;width:2px;height:2px;--target-opacity:0.1;--draw-delay:1.57s;--pulse-dur:10.6s;--pulse-delay:0.81s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:61.6%;top:28.3%;width:3px;height:3px;--target-opacity:0.1;--draw-delay:2.36s;--pulse-dur:7.3s;--pulse-delay:2.54s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:80.0%;top:8.1%;width:3px;height:3px;--target-opacity:0.14;--draw-delay:1.66s;--pulse-dur:8.3s;--pulse-delay:2.96s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:53.9%;top:43.3%;width:2px;height:2px;--target-opacity:0.09;--draw-delay:2.46s;--pulse-dur:10.5s;--pulse-delay:0.6s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:5.4%;top:38.0%;width:3px;height:3px;--target-opacity:0.09;--draw-delay:0.33s;--pulse-dur:8.5s;--pulse-delay:3.6s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:76.8%;top:83.2%;width:3px;height:3px;--target-opacity:0.1;--draw-delay:0.65s;--pulse-dur:7.5s;--pulse-delay:3.12s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:85.1%;top:41.4%;width:3px;height:3px;--target-opacity:0.14;--draw-delay:2.41s;--pulse-dur:8.2s;--pulse-delay:0.65s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:77.2%;top:20.3%;width:3px;height:3px;--target-opacity:0.08;--draw-delay:1.92s;--pulse-dur:8.7s;--pulse-delay:3.72s;"></span>
+    <span class="bg-dot bg-ink-soft" style="left:77.4%;top:83.5%;width:2px;height:2px;--target-opacity:0.1;--draw-delay:2.05s;--pulse-dur:7.5s;--pulse-delay:3.49s;"></span>
+    <span class="bg-sq bg-terracotta-outline" style="left:85.8%;top:25.1%;width:6px;height:6px;--target-opacity:0.18;--rot:18deg;--draw-delay:0.26s;--pulse-dur:8.0s;--pulse-delay:1.31s;"></span>
+    <span class="bg-sq bg-ink-soft" style="left:86.0%;top:89.2%;width:6px;height:6px;--target-opacity:0.18;--rot:33deg;--draw-delay:2.55s;--pulse-dur:9.7s;--pulse-delay:3.76s;"></span>
+    <span class="bg-sq bg-ink-soft" style="left:53.1%;top:89.5%;width:5px;height:5px;--target-opacity:0.21;--rot:12deg;--draw-delay:0.46s;--pulse-dur:9.2s;--pulse-delay:2.91s;"></span>
+    <span class="bg-sq bg-terracotta-outline" style="left:61.8%;top:58.1%;width:7px;height:7px;--target-opacity:0.15;--rot:25deg;--draw-delay:0.31s;--pulse-dur:9.2s;--pulse-delay:2.08s;"></span>
+    <span class="bg-sq bg-terracotta-outline" style="left:83.5%;top:65.1%;width:7px;height:7px;--target-opacity:0.23;--rot:25deg;--draw-delay:1.24s;--pulse-dur:11.7s;--pulse-delay:3.68s;"></span>
+    <span class="bg-sq bg-ink-soft" style="left:75.4%;top:63.1%;width:5px;height:5px;--target-opacity:0.23;--rot:-22deg;--draw-delay:0.94s;--pulse-dur:9.0s;--pulse-delay:1.61s;"></span>
+    <span class="bg-sq bg-ink-soft" style="left:61.0%;top:16.9%;width:6px;height:6px;--target-opacity:0.22;--rot:33deg;--draw-delay:2.0s;--pulse-dur:7.9s;--pulse-delay:2.28s;"></span>
+    <span class="bg-sq bg-ink-soft" style="left:65.9%;top:77.7%;width:6px;height:6px;--target-opacity:0.17;--rot:45deg;--draw-delay:1.59s;--pulse-dur:10.3s;--pulse-delay:1.86s;"></span>
+  </div>
   <h1>
     <span class="lang-kr">박대원<br><em>인사 전략을,</em><br>숫자로 증명합니다.</span>
     <span class="lang-en">Daewon Park<br><em>People strategy,</em><br>quantified.</span>
@@ -756,8 +860,8 @@
     <div class="expertise-num mono">01</div>
     <div class="expertise-title"><span class="lang-kr">보상 및 토탈리워드</span><span class="lang-en">Compensation &amp; Total Rewards</span></div>
     <div class="expertise-desc">
-      <span class="lang-kr">임금체계 설계, 인상률·승진 예산 계획, 인센티브 설계, Workday Advanced Compensation 구축.</span>
-      <span class="lang-en">Pay structure design, merit &amp; promotion budget planning, incentive design, and Workday Advanced Compensation implementation.</span>
+      <span class="lang-kr">임금체계 설계, 인상률·승진 예산 계획, 인센티브 설계, Workday Advanced Compensation 구축, Mercer·Towers Watson 보상서베이 참여 및 분석.</span>
+      <span class="lang-en">Pay structure design, merit &amp; promotion budget planning, incentive design, Workday Advanced Compensation implementation, and market benchmarking through the Mercer and Towers Watson total rewards surveys.</span>
     </div>
   </div>
   <div class="expertise-card">
@@ -914,6 +1018,42 @@
     document.getElementById('btn-kr').classList.toggle('active', lang === 'kr');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   }
+
+  // scroll-triggered reveal (About / Experience / Expertise / Projects / Credentials / Contact)
+  (function () {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !('IntersectionObserver' in window)) return;
+
+    const STEP = 0.09; // seconds between staggered items within a group
+
+    const groups = [
+      document.querySelectorAll('.section-head'),
+      document.querySelectorAll('.about-lead, .about-fact'),
+      document.querySelectorAll('.timeline .role'),
+      document.querySelectorAll('.expertise-card'),
+      document.querySelectorAll('.project-card'),
+      document.querySelectorAll('.cred-item, .speak-item'),
+      document.querySelectorAll('.contact-title, .contact-links'),
+    ];
+
+    groups.forEach(list => {
+      list.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.setProperty('--reveal-delay', (i % 6) * STEP + 's');
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
 </script>
 
 </body>
